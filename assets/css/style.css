@@ -57,3 +57,18 @@ button:hover {
     margin-top: 30px;
     font-size: 20px;
 }
+
+.error {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: #ff6347;
+    font-size: 0.8em;
+    font-family: Arial, sans-serif;
+    background-color: #fff2f3;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    margin-top: 3rem;
+}

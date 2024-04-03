@@ -5,6 +5,11 @@ async function calcular(){
     const inputTempo = document.getElementById("tempo").value;
     const inputTaxa = document.getElementById("taxa").value;
 
+    if (inputValor < 1 || inputTempo < 1) {
+        alert("O valor mínimo de investimento deve ser R$1. O número mínimo de meses investidos deve ser de 1 mês.");
+        return;
+    }
+
     const objData = {valor: Number(inputValor), tempo: Number(inputTempo), taxa: Number(inputTaxa)};
 
     const response = await fetch("http://localhost:8000/api/bff",
@@ -65,3 +70,33 @@ async function retornaResultado(){
         console.log(data);
     })
 }
+
+/* function validarInvestimento() {
+    const investimentoInput = document.getElementById('investimento');
+    const investimentoError = document.getElementById('investimento-error');
+
+    if (investimentoInput.value < 1) {
+        investimentoInput.classList.add('error');
+        investimentoError.textContent = "O valor deve ser igual ou maior a R$1";
+    } else {
+        investimentoInput.classList.remove('error');
+        investimentoError.textContent = "";
+    }
+}
+
+investimento.addEventListener('input', validarInvestimento);
+
+function validarTempo() {
+    const tempoInput = document.getElementById('tempo');
+    const tempoError = document.getElementById('tempo-error');
+
+    if (tempoInput.value < 1) {
+        tempoInput.classList.add('error');
+        tempoError.textContent = "O tempo deve ser igual ou maior 1 mês";
+    } else {
+        tempoInput.classList.remove('error');
+        tempoError.textContent = "";
+    }
+}
+
+tempo.addEventListener('input', validarTempo); */
