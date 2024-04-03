@@ -16,7 +16,7 @@ form {
     align-items: center;
 }
 
-input[type="number"] {
+input {
     width: 100px;
     padding: 10px;
     margin: 10px;
@@ -42,7 +42,7 @@ option {
 
 button {
     padding: 10px 20px;
-    background-color: #844ce3;
+    background-color: #b4b4b4;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -50,7 +50,7 @@ button {
 }
 
 button:hover {
-    background-color: #6718ef;
+    background-color: #bbbbbb;
 }
 
 #result {
@@ -71,4 +71,21 @@ button:hover {
     border-radius: 5px;
     display: flex;
     margin-top: 3rem;
+}
+
+.valor-menor-que-um {
+    border: 2px solid red;
+}
+
+.button-enabled {
+    padding: 10px 20px;
+    background-color: #844ce3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-enabled:hover {
+    background-color: #6718ef;
 }

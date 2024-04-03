@@ -17,7 +17,7 @@
                 <input type="number" name="tempo" id="tempo" required min="1">
             </label>
             <label>Taxa: 
-                <select name="taxa" id="taxa">
+                <select name="taxa" id="taxa" onchange="habilitarBotao()">
                     <option value="" selected></option>
                     <option value="0.00989">Base CDI</option>
                     <option value="0.00989">Banco Itaú</option>
@@ -26,7 +26,7 @@
                     <option value="0.01087">Banco Neon</option>
                 </select>
             </label>
-            <button type="button" onclick="retornaResultado()">Calcular</button>
+            <button type="button" id="buttonCalc" onclick="retornaResultado()" disabled>Calcular</button>
         </form>
         <section id="resultado"></section>
     </main>

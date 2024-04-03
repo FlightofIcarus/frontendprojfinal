@@ -5,8 +5,7 @@ async function calcular(){
     const inputTempo = document.getElementById("tempo").value;
     const inputTaxa = document.getElementById("taxa").value;
 
-    if (inputValor < 1 || inputTempo < 1) {
-        alert("O valor mínimo de investimento deve ser R$1. O número mínimo de meses investidos deve ser de 1 mês.");
+   if (!validarInputs()) {
         return;
     }
 
@@ -71,32 +70,46 @@ async function retornaResultado(){
     })
 }
 
-/* function validarInvestimento() {
-    const investimentoInput = document.getElementById('investimento');
-    const investimentoError = document.getElementById('investimento-error');
+function validarInputs() {
+    const inputValor = parseFloat(document.getElementById('investimento').value);
+    const inputTempo = parseFloat(document.getElementById('tempo').value);
 
-    if (investimentoInput.value < 1) {
-        investimentoInput.classList.add('error');
-        investimentoError.textContent = "O valor deve ser igual ou maior a R$1";
+    if (inputValor < 1) {
+
+        document.getElementById('investimento').classList.add('valor-menor-que-um');
+
+        alert("O valor mínimo de investimento deve ser R$1.");
+        
+        return false;
     } else {
-        investimentoInput.classList.remove('error');
-        investimentoError.textContent = "";
+
+        document.getElementById('investimento').classList.remove('valor-menor-que-um');
     }
+
+    if (inputTempo < 1) {
+
+        document.getElementById('tempo').classList.add('valor-menor-que-um');
+
+        alert("O número mínimo de meses investidos deve ser 1.");
+        
+        return false;
+    } else {
+
+        document.getElementById('tempo').classList.remove('valor-menor-que-um');
+    }
+
+    return true;
 }
 
-investimento.addEventListener('input', validarInvestimento);
+function habilitarBotao() {
+    const selectTaxa = document.getElementById("taxa");
+    const botaoCalcular = document.getElementById("buttonCalc");
 
-function validarTempo() {
-    const tempoInput = document.getElementById('tempo');
-    const tempoError = document.getElementById('tempo-error');
-
-    if (tempoInput.value < 1) {
-        tempoInput.classList.add('error');
-        tempoError.textContent = "O tempo deve ser igual ou maior 1 mês";
+    if (selectTaxa.value === "") {
+        botaoCalcular.disabled = true;
+        document.getElementById("buttonCalc").classList.remove('button-enabled')
     } else {
-        tempoInput.classList.remove('error');
-        tempoError.textContent = "";
+        botaoCalcular.disabled = false;
+        document.getElementById("buttonCalc").classList.add('button-enabled')
     }
 }
-
-tempo.addEventListener('input', validarTempo); */
