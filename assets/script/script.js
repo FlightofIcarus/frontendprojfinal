@@ -1,6 +1,9 @@
 async function calcular(){
     event.preventDefault();
 
+    const resultadoContainer = document.getElementById("resultado");
+    resultadoContainer.innerHTML = ""
+
     const inputValor = document.getElementById("investimento").value;
     const inputTempo = document.getElementById("tempo").value;
     const inputTaxa = document.getElementById("taxa").value;
