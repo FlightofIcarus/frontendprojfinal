@@ -1,9 +1,16 @@
 async function calcular(){
     event.preventDefault();
 
+    const resultadoContainer = document.getElementById("resultado");
+    resultadoContainer.innerHTML = ""
+
     const inputValor = document.getElementById("investimento").value;
     const inputTempo = document.getElementById("tempo").value;
     const inputTaxa = document.getElementById("taxa").value;
+
+   if (!validarInputs()) {
+        return;
+    }
 
     const objData = {valor: Number(inputValor), tempo: Number(inputTempo), taxa: Number(inputTaxa)};
 
@@ -64,4 +71,48 @@ async function retornaResultado(){
 
         console.log(data);
     })
+}
+
+function validarInputs() {
+    const inputValor = parseFloat(document.getElementById('investimento').value);
+    const inputTempo = parseFloat(document.getElementById('tempo').value);
+
+    if (inputValor < 1) {
+
+        document.getElementById('investimento').classList.add('valor-menor-que-um');
+
+        alert("O valor mínimo de investimento deve ser R$1.");
+        
+        return false;
+    } else {
+
+        document.getElementById('investimento').classList.remove('valor-menor-que-um');
+    }
+
+    if (inputTempo < 1) {
+
+        document.getElementById('tempo').classList.add('valor-menor-que-um');
+
+        alert("O número mínimo de meses investidos deve ser 1.");
+        
+        return false;
+    } else {
+
+        document.getElementById('tempo').classList.remove('valor-menor-que-um');
+    }
+
+    return true;
+}
+
+function habilitarBotao() {
+    const selectTaxa = document.getElementById("taxa");
+    const botaoCalcular = document.getElementById("buttonCalc");
+
+    if (selectTaxa.value === "") {
+        botaoCalcular.disabled = true;
+        document.getElementById("buttonCalc").classList.remove('button-enabled')
+    } else {
+        botaoCalcular.disabled = false;
+        document.getElementById("buttonCalc").classList.add('button-enabled')
+    }
 }
